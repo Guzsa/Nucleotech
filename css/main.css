@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.navbar {
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .nav-links a {
+  margin: 0 1rem;
+  color: #00ffcc;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.navbar .nav-links a:hover {
+  color: rgb(51, 255, 214.2);
+}
+
+.hero {
+  background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+  color: #f0f0f0;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.hero .hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-out;
+}
+.hero .hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #00ffcc;
+}
+.hero .hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.hero .hero-content .btn-cta {
+  background-color: #00ffcc;
+  color: #0f0f0f;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+.hero .hero-content .btn-cta:hover {
+  background-color: rgb(51, 255, 214.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.catalogo {
+  padding: 2rem;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+.catalogo h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.catalogo .productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.carrito {
+  background-color: #121212;
+  color: #f0f0f0;
+  padding: 2rem;
+}
+.carrito h2 {
+  margin-bottom: 1rem;
+}
+.carrito .carrito-items {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.carrito .carrito-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.carrito .btn-finalizar {
+  background-color: #00ffcc;
+  color: #0f0f0f;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.carrito .btn-finalizar:hover {
+  background-color: rgb(51, 255, 214.2);
+}
+
+.footer {
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+  padding: 2rem;
+  text-align: center;
+}
+.footer .footer-links a {
+  margin: 0 1rem;
+  color: #00ffcc;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.footer .footer-links a:hover {
+  color: rgb(51, 255, 214.2);
+}
+.footer .footer-copy {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.producto-card {
+  background-color: rgb(2.25, 2.25, 2.25);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.producto-card .producto-card {
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+.producto-card .producto-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+.producto-card img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+.producto-card button {
+  background-color: #00ffcc;
+  color: #0f0f0f;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.producto-card button:hover {
+  background-color: rgb(51, 255, 214.2);
+}
+
+button,
+.btn {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.filtros select,
+.filtros input[type=range] {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+/*# sourceMappingURL=main.css.map */

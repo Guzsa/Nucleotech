@@ -1,0 +1,16 @@
+@use 'base/reset';
+@use 'base/variables';
+@use 'base/mixins';
+@use 'base/fonts';
+
+@use 'layout/navbar';
+@use 'layout/hero';
+@use 'layout/catalogo';
+@use 'layout/carrito';
+@use 'layout/footer';
+
+@use 'components/producto-card';
+@use 'components/botones';
+@use 'components/filtros';
+
+@use 'pages/home';

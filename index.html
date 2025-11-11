@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de Componentes</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">NúcleoTech</div>
+    <nav class="nav-links">
+      <a href="#procesadores">Procesadores</a>
+      <a href="#graficas">Placas de video</a>
+      <a href="#ram">RAM</a>
+      <a href="#almacenamiento">Almacenamiento</a>
+      <a href="#perifericos">Periféricos</a>
+    </nav>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Potenciá tu máquina</h1>
+      <p>Elegí con el corazón y la lógica.</p>
+      <a href="#catalogo" class="btn-cta">Explorar componentes</a>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <main id="catalogo" class="catalogo">
+    <h2>Componentes destacados</h2>
+    <div class="filtros">
+      <!-- Aquí irán los filtros por categoría, marca, precio -->
+    </div>
+    <div class="productos-grid">
+      <!-- Tarjetas de producto -->
+      <article class="producto-card">
+        <img src="img/procesador.jpg" alt="Procesador Ryzen 7" />
+        <h3>Ryzen 7 5800X</h3>
+        <p>$150.000</p>
+        <button>Agregar al carrito</button>
+      </article>
+      <!-- Repetir para más productos -->
+    </div>
+  </main>
+
+  <!-- Carrito -->
+  <aside class="carrito">
+    <h2>Tu carrito</h2>
+    <ul class="carrito-items">
+      <!-- Items agregados dinámicamente -->
+    </ul>
+    <div class="carrito-total">
+      <span>Total:</span>
+      <strong>$0</strong>
+    </div>
+    <button class="btn-finalizar">Finalizar compra</button>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">NúcleoTech</div>
+    <nav class="footer-links">
+      <a href="#">Contacto</a>
+      <a href="#">Términos</a>
+      <a href="#">Instagram</a>
+    </nav>
+    <p class="footer-copy">Tu próxima mejora empieza aquí.</p>
+  </footer>
+</body>
+</html>

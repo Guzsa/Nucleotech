@@ -1,0 +1,11 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+button,
+.btn {
+  font-family: variables.$fuente-principal;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  @include m.transition;
+}

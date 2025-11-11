@@ -1,0 +1,19 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+.catalogo {
+  padding: 2rem;
+  background-color: #1a1a1a;
+  color: variables.$color-texto;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+}

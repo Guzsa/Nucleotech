@@ -1,0 +1,14 @@
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+
+  select,
+  input[type="range"] {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none;
+  }
+}

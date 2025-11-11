@@ -1,0 +1,20 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+.navbar {
+  background-color: variables.$color-bg;
+  color: variables.$color-texto;
+  padding: variables.$espaciado-base;
+@include m.flex-center;
+  justify-content: space-between;
+
+  .nav-links a {
+    margin: 0 variables.$espaciado-base;
+    color: variables.$color-acento;
+    text-decoration: none;
+  @include m.transition;
+    &:hover {
+      color: lighten(variables.$color-acento, 10%);
+    }
+  }
+}

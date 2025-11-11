@@ -1,0 +1,25 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+.footer {
+  background-color: #0a0a0a;
+  color: variables.$color-texto;
+  padding: 2rem;
+  text-align: center;
+
+  .footer-links a {
+    margin: 0 1rem;
+    color: variables.$color-acento;
+    text-decoration: none;
+    @include m.transition;
+    &:hover {
+      color: lighten(variables.$color-acento, 10%);
+    }
+  }
+
+  .footer-copy {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+}
