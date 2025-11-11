@@ -1,0 +1,29 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+.terminos {
+  padding: variables.$espaciado-base * 4;
+  background-color: variables.$color-bg;
+  color: variables.$color-texto;
+  font-family: variables.$fuente-principal;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: variables.$espaciado-base;
+    color: variables.$color-acento;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: variables.$espaciado-base;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: variables.$espaciado-base * 2;
+
+    li {
+      margin-bottom: variables.$espaciado-base * 0.5;
+    }
+  }
+}

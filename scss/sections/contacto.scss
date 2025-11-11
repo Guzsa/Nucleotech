@@ -1,0 +1,46 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+.contacto {
+  padding: variables.$espaciado-base * 4;
+  background-color: variables.$color-bg;
+  color: variables.$color-texto;
+  font-family: variables.$fuente-principal;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: variables.$espaciado-base;
+    color: variables.$color-acento;
+  }
+
+  form {
+    display: grid;
+    gap: variables.$espaciado-base * 1.5;
+    max-width: 600px;
+    margin: auto;
+
+    input,
+    textarea {
+      padding: variables.$espaciado-base;
+      background-color: transparent;
+      border: 1px solid variables.$color-acento;
+      border-radius: 0.5rem;
+      color: variables.$color-texto;
+    }
+
+    button {
+      background-color: variables.$color-acento;
+      color: variables.$color-bg;
+      padding: variables.$espaciado-base * 1.2 variables.$espaciado-base * 2;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: lighten(variables.$color-acento, 10%);
+      }
+    }
+  }
+}
+

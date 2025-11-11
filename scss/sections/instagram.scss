@@ -1,0 +1,32 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
+.instagram {
+  padding: variables.$espaciado-base * 3;
+  background-color: variables.$color-bg;
+  color: variables.$color-texto;
+  font-family: variables.$fuente-principal;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: variables.$espaciado-base * 2;
+    color: variables.$color-acento;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: variables.$espaciado-base;
+
+    img {
+      width: 100%;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

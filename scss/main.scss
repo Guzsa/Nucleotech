@@ -9,6 +9,10 @@
 @use 'layout/carrito';
 @use 'layout/footer';
 
+@use 'sections/contacto';
+@use 'sections/instagram';
+@use 'sections/terminos';
+
 @use 'components/producto-card';
 @use 'components/botones';
 @use 'components/filtros';
