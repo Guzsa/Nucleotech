@@ -47,24 +47,35 @@
         <img src="img/procesador.jpg" alt="Procesador Ryzen 7" />
         <h3>Ryzen 7 5800X</h3>
         <p>$150.000</p>
-        <button>Agregar al carrito</button>
+        <button 
+        class="btn-agregar"
+        data-nombre="Ryzen 7 5800X"
+        data-precio="150000"
+        >
+        Agregar al carrito
+</button>
       </article>
       <!-- Repetir para más productos -->
     </div>
   </main>
 
   <!-- Carrito -->
-  <aside class="carrito">
-    <h2>Tu carrito</h2>
-    <ul class="carrito-items">
-      <!-- Items agregados dinámicamente -->
-    </ul>
-    <div class="carrito-total">
-      <span>Total:</span>
-      <strong>$0</strong>
-    </div>
-    <button class="btn-finalizar">Finalizar compra</button>
-  </aside>
+ <aside class="carrito">
+  <h2>Tu carrito</h2>
+
+  <ul class="carrito-items" id="carritoItems">
+    <!-- Items agregados dinámicamente -->
+  </ul>
+  <div class="carrito-total">
+    <span>Total:</span>
+    <strong id="carritoTotal">$0</strong>
+  </div>
+
+  <button class="btn-finalizar" id="btnFinalizar">
+  Finalizar compra
+</button>
+<p id="mensajeCarrito"></p>
+</aside>
 
   <!-- Footer -->
   <footer class="footer">
@@ -76,5 +87,6 @@
     </nav>
     <p class="footer-copy">Tu próxima mejora empieza aquí, no dudes en elegirnos.</p>
   </footer>
+<script src="./js/app.js"></script>
 </body>
 </html>
