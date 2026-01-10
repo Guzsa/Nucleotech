@@ -7,3 +7,9 @@
 @mixin transition($prop: all, $dur: 0.3s) {
   transition: $prop $dur ease-in-out;
 }
+
+@mixin respond-to($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
