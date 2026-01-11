@@ -2,6 +2,26 @@
 @use '../base/mixins' as m;
 
 .carrito {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  transition: right 0.3s ease;
+  z-index: 1000;
+
+  &.activo {
+    right: 0;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+
+.carrito {
   background-color: #121212;
   color: variables.$color-texto;
   padding: 2rem;

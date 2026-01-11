@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Finalizar compra | NúcleoTech</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+<h1>Finalizar compra</h1>
+
+<section class="checkout">
+
+  <ul id="checkoutItems"></ul>
+
+  <h2>Total: <span id="checkoutTotal">$0</span></h2>
+
+  <h3>Método de pago</h3>
+  <select id="metodoPago">
+    <option value="">Seleccionar</option>
+    <option value="tarjeta">Tarjeta de crédito</option>
+    <option value="debito">Débito</option>
+    <option value="transferencia">Transferencia</option>
+  </select>
+
+  <div class="checkout-botones">
+    <button id="btnPagar">Aceptar pago</button>
+    <button id="btnCancelar">Cancelar</button>
+  </div>
+
+  <p id="mensajeCheckout"></p>
+
+</section>
+
+<script src="../js/checkout.js"></script>
+</body>
+</html>

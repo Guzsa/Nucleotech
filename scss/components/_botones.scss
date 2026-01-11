@@ -1,6 +1,17 @@
 @use '../base/variables';
 @use '../base/mixins' as m;
 
+button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  @include mobile {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
 button,
 .btn {
   font-family: variables.$fuente-principal;
