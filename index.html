@@ -4,29 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda de Componentes</title>
+
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Navbar -->
+
+  <!-- ================= NAVBAR ================= -->
   <header class="navbar">
     <div class="logo">NúcleoTech</div>
+
     <nav class="nav-links">
-      <a href="#procesadores">Procesadores</a>
-      <a href="#graficas">Placas de video</a>
-      <a href="#ram">RAM</a>
-      <a href="#almacenamiento">Almacenamiento</a>
-      <a href="#perifericos">Periféricos</a>
+      <a href="#catalogo">Productos</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Contacto</a>
     </nav>
+
     <div class="nav-icons">
-      <i class="fas fa-search"></i>
       <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
+
+      <!-- ICONO CARRITO CON CONTADOR -->
+      <i class="fas fa-shopping-cart" id="iconoCarrito">
+        <span id="contadorCarrito">0</span>
+      </i>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-content">
       <h1>Potenciá tu máquina</h1>
@@ -35,58 +40,72 @@
     </div>
   </section>
 
-  <!-- Catálogo -->
+  <!-- ================= CATÁLOGO ================= -->
   <main id="catalogo" class="catalogo">
     <h2>Componentes destacados</h2>
-    <div class="filtros">
-      <!-- Aquí irán los filtros por categoría, marca, precio -->
-    </div>
+
     <div class="productos-grid">
-      <!-- Tarjetas de producto -->
+
+      <!-- PRODUCTO -->
       <article class="producto-card">
-        <img src="img/procesador.jpg" alt="Procesador Ryzen 7" />
+        <img src="img/procesador.jpg" alt="Ryzen 7 5800X" />
         <h3>Ryzen 7 5800X</h3>
         <p>$150.000</p>
-        <button 
-        class="btn-agregar"
-        data-nombre="Ryzen 7 5800X"
-        data-precio="150000"
+        <button
+          class="btn-agregar"
+          data-nombre="Ryzen 7 5800X"
+          data-precio="150000"
         >
-        Agregar al carrito
-</button>
+          Agregar al carrito
+        </button>
       </article>
-      <!-- Repetir para más productos -->
+
+      <!-- Podés duplicar este bloque para más productos -->
+
     </div>
   </main>
 
-  <!-- Carrito -->
- <aside class="carrito">
-  <h2>Tu carrito</h2>
+  <!-- ================= CARRITO ================= -->
+  <aside class="carrito" id="carrito">
+    <h2>Tu carrito</h2>
 
-  <ul class="carrito-items" id="carritoItems">
-    <!-- Items agregados dinámicamente -->
-  </ul>
-  <div class="carrito-total">
-    <span>Total:</span>
-    <strong id="carritoTotal">$0</strong>
-  </div>
+    <ul class="carrito-items" id="carritoItems">
+      <!-- Productos dinámicos -->
+    </ul>
 
-  <button class="btn-finalizar" id="btnFinalizar">
-  Finalizar compra
-</button>
-<p id="mensajeCarrito"></p>
-</aside>
+    <div class="carrito-total">
+      <span>Total:</span>
+      <strong id="carritoTotal">$0</strong>
+    </div>
 
-  <!-- Footer -->
+    <button class="btn-finalizar" id="btnFinalizar">
+      Finalizar compra
+    </button>
+
+    <button class="btn-vaciar" id="btnVaciar">
+      Vaciar carrito
+    </button>
+
+    <p id="mensajeCarrito"></p>
+  </aside>
+
+  <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="footer-logo">NúcleoTech</div>
+
     <nav class="footer-links">
-      <a href="./pages/contacto.html">Contacto</a>
-      <a href="./pages/terminos.html">Términos</a>
-      <a href="./pages/instagram.html">Instagram</a>
+      <a href="#">Contacto</a>
+      <a href="#">Términos</a>
+      <a href="#">Instagram</a>
     </nav>
-    <p class="footer-copy">Tu próxima mejora empieza aquí, no dudes en elegirnos.</p>
+
+    <p class="footer-copy">
+      Tu próxima mejora empieza aquí.
+    </p>
   </footer>
-<script src="./js/app.js"></script>
+
+  <!-- ================= JS ================= -->
+  <script src="./js/app.js"></script>
+
 </body>
 </html>
