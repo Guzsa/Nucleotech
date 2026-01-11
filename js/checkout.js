@@ -1,56 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const lista = document.getElementById("checkoutItems");
-  const totalSpan = document.getElementById("checkoutTotal");
-  const metodoPago = document.getElementById("metodoPago");
-  const mensaje = document.getElementById("mensajeCheckout");
-
+  const lista = document.getElementById("checkoutLista");
+  const total = document.getElementById("checkoutTotal");
   const btnPagar = document.getElementById("btnPagar");
-  const btnCancelar = document.getElementById("btnCancelar");
+  const mensaje = document.getElementById("mensajePago");
 
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  function renderCheckout() {
-    lista.innerHTML = "";
-
-    if (carrito.length === 0) {
-      mensaje.textContent = "No hay productos en el carrito";
-      btnPagar.disabled = true;
-      return;
-    }
-
-    let total = 0;
-
-    carrito.forEach(prod => {
-      total += prod.precio;
-      const li = document.createElement("li");
-      li.textContent = `${prod.nombre} - $${prod.precio}`;
-      lista.appendChild(li);
-    });
-
-    totalSpan.textContent = `$${total}`;
+  if (carrito.length === 0) {
+    mensaje.textContent = "No hay productos en el carrito.";
+    btnPagar.disabled = true;
+    return;
   }
 
+  // Render resumen
+  const totalCompra = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+
+  carrito.forEach(prod => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span>${prod.nombre}</span>
+      <span>$${prod.precio}</span>
+    `;
+    lista.appendChild(li);
+  });
+
+  total.textContent = `$${totalCompra}`;
+
+  // Simulación de pago
   btnPagar.addEventListener("click", () => {
-    if (!metodoPago.value) {
-      mensaje.textContent = "Seleccioná un método de pago";
+    const metodo = document.querySelector("input[name='pago']:checked");
+
+    if (!metodo) {
+      mensaje.textContent = "Seleccioná un medio de pago.";
       return;
     }
 
-    mensaje.textContent = "Pago aprobado ✅ ¡Gracias por tu compra!";
-    localStorage.removeItem("carrito");
+    const pagoAceptado = Math.random() > 0.3; // 70% éxito
 
-    setTimeout(() => {
-      window.location.href = "../index.html";
-    }, 3000);
+    if (pagoAceptado) {
+      mensaje.textContent = "Pago aprobado ✅ Gracias por tu compra";
+      localStorage.removeItem("carrito");
+      btnPagar.disabled = true;
+    } else {
+      mensaje.textContent = "Pago rechazado ❌ Intentá nuevamente";
+    }
   });
 
-  btnCancelar.addEventListener("click", () => {
-    mensaje.textContent = "Pago cancelado ❌";
-    setTimeout(() => {
-      window.location.href = "../index.html";
-    }, 2000);
-  });
-
-  renderCheckout();
 });

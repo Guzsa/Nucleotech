@@ -1,22 +1,18 @@
 @use '../base/variables';
 @use '../base/mixins' as m;
 
+
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
 
-  .nav-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  @include tablet {
+  @include m.tablet {
     .nav-links {
       display: none;
     }
   }
 }
+
 
 .navbar {
   background-color: variables.$color-bg;

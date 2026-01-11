@@ -6,15 +6,15 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 
-  @include desktop {
+  @include m.desktop {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include tablet {
+  @include m.tablet {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @include mobile {
+  @include m.mobile {
     grid-template-columns: 1fr;
   }
 }
