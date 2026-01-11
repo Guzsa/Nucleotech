@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const contadorCarrito = document.getElementById("contadorCarrito");
   const iconoCarrito = document.getElementById("iconoCarrito");
   const carritoAside = document.getElementById("carrito");
+  const overlay = document.getElementById("overlay");
+
 
   // ===============================
   // EVENTOS
@@ -41,9 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Abrir / cerrar carrito
-  if (iconoCarrito && carritoAside) {
+  if (iconoCarrito && carritoAside && overlay) {
     iconoCarrito.addEventListener("click", () => {
       carritoAside.classList.toggle("activo");
+      overlay.classList.toggle("activo");
+    });
+
+    overlay.addEventListener("click", () => {
+      carritoAside.classList.remove("activo");
+      overlay.classList.remove("activo");
     });
   }
 
@@ -70,23 +78,31 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
-  function renderCarrito() {
-    listaCarrito.innerHTML = "";
+ function renderCarrito() {
+  listaCarrito.innerHTML = "";
 
-    const total = carrito.reduce((acc, prod) => acc + prod.precio, 0);
-
-    carrito.forEach(prod => {
-      const li = document.createElement("li");
-      li.innerHTML = `
-        ${prod.nombre} - $${prod.precio}
-        <button class="btn-eliminar" data-id="${prod.id}">X</button>
-      `;
-      listaCarrito.appendChild(li);
-    });
-
-    totalCarrito.textContent = `$${total}`;
+  if (carrito.length === 0) {
+    listaCarrito.innerHTML = "<li>El carrito está vacío</li>";
+    totalCarrito.textContent = "$0";
     actualizarEstado();
+    return;
   }
+
+  const total = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+
+  carrito.forEach(prod => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${prod.nombre} - $${prod.precio}
+      <button class="btn-eliminar" data-id="${prod.id}">X</button>
+    `;
+    listaCarrito.appendChild(li);
+  });
+
+  totalCarrito.textContent = `$${total}`;
+  actualizarEstado();
+}
+
 
   function finalizarCompra() {
     if (carrito.length === 0) {
