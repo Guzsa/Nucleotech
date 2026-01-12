@@ -45,6 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   btnContinuar.addEventListener("click", () => {
 
+     // Validación de carrito vacío
+  if (carrito.length === 0) {
+    mensaje.textContent = "No hay productos en el carrito.";
+    return;
+  }
+
     const metodo = document.querySelector('input[name="pago"]:checked');
 
     if (!metodo) {

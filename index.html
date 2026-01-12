@@ -5,32 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda de Componentes</title>
 
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="./css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
   <!-- ================= NAVBAR ================= -->
-  <header class="navbar">
-    <div class="logo">NúcleoTech</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand fw-bold" href="#">NúcleoTech</a>
 
-    <nav class="nav-links">
-      <a href="#catalogo">Productos</a>
-      <a href="#">Ofertas</a>
-      <a href="#">Contacto</a>
-    </nav>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="nav-icons">
-      <i class="fas fa-user"></i>
+    <div class="collapse navbar-collapse" id="navbarContent">
 
-      <!-- ICONO CARRITO CON CONTADOR -->
-    <a href="./pages/checkout.html" id="iconoCarrito">
-  <i class="fas fa-shopping-cart"></i>
-  <span id="contadorCarrito">0</span>
-</a>
+      <!-- Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+      </ul>
+
+      <!-- Iconos -->
+      <div class="d-flex align-items-center gap-3">
+
+        <i class="fas fa-user text-white fs-5"></i>
+
+        <!-- MINI CARRITO -->
+        <div class="dropdown carrito-dropdown-container">
+
+          <!-- ICONO -->
+          <div id="iconoCarrito" class="carrito-icono dropdown-toggle text-white" data-bs-toggle="dropdown">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contadorCarrito" class="badge bg-primary">0</span>
+          </div>
+
+          <!-- DROPDOWN -->
+          <div class="dropdown-menu dropdown-menu-end p-3 carrito-dropdown">
+            <ul id="dropdownItems" class="list-unstyled mb-2"></ul>
+
+            <p class="mb-2">Total: <strong id="dropdownTotal">$0</strong></p>
+
+            <div class="d-flex justify-content-between">
+              <button id="dropdownVaciar" class="btn btn-danger btn-sm">Vaciar</button>
+              <button id="dropdownCheckout" class="btn btn-success btn-sm">Ir al carrito</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-  </header>
+  </nav>
 
   <!-- ================= HERO ================= -->
   <section class="hero">
@@ -42,205 +76,139 @@
   </section>
 
   <!-- ================= CATÁLOGO ================= -->
-  <main id="catalogo" class="catalogo">
-    <h2>Componentes destacados</h2>
+  <main id="catalogo" class="catalogo container py-5">
+    <h2 class="text-center mb-4">Componentes destacados</h2>
 
     <div class="productos-grid">
 
-      <!-- PRODUCTO -->
+      <!-- PRODUCTO 1 -->
       <article class="producto-card">
         <img src="./Images/Ryzen-7-5800X_Foto1g.png" alt="Ryzen 7 5800X" />
         <h3>Ryzen 7 5800X</h3>
         <p>$150.000</p>
-        <button
-          class="btn-agregar"
-          data-nombre="Ryzen 7 5800X"
-          data-precio="150000">
+        <button class="btn-agregar" data-nombre="Ryzen 7 5800X" data-precio="150000">
           Agregar al carrito
         </button>
       </article>
-<article class="producto-card">
-  <img src="img/ryzen5.jpg" alt="Ryzen 5 5600X">
-  <h3>Ryzen 5 5600X</h3>
-  <p>$120.000</p>
-  <button class="btn-agregar"
-    data-nombre="Ryzen 5 5600X"
-    data-precio="120000">
-    Agregar al carrito
-  </button>
-</article>
 
-<article class="producto-card">
-  <img src="img/intel-i5.jpg" alt="Intel Core i5 12400F">
-  <h3>Intel Core i5 12400F</h3>
-  <p>$135.000</p>
-  <button class="btn-agregar"
-    data-nombre="Intel Core i5 12400F"
-    data-precio="135000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 2 -->
+      <article class="producto-card">
+        <img src="img/ryzen5.jpg" alt="Ryzen 5 5600X">
+        <h3>Ryzen 5 5600X</h3>
+        <p>$120.000</p>
+        <button class="btn-agregar" data-nombre="Ryzen 5 5600X" data-precio="120000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/rtx3060.jpg" alt="RTX 3060">
-  <h3>NVIDIA RTX 3060 12GB</h3>
-  <p>$380.000</p>
-  <button class="btn-agregar"
-    data-nombre="NVIDIA RTX 3060 12GB"
-    data-precio="380000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 3 -->
+      <article class="producto-card">
+        <img src="img/intel-i5.jpg" alt="Intel Core i5 12400F">
+        <h3>Intel Core i5 12400F</h3>
+        <p>$135.000</p>
+        <button class="btn-agregar" data-nombre="Intel Core i5 12400F" data-precio="135000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/ssd1tb.jpg" alt="SSD 1TB">
-  <h3>SSD NVMe 1TB</h3>
-  <p>$95.000</p>
-  <button class="btn-agregar"
-    data-nombre="SSD NVMe 1TB"
-    data-precio="95000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 4 -->
+      <article class="producto-card">
+        <img src="img/rtx3060.jpg" alt="RTX 3060">
+        <h3>NVIDIA RTX 3060 12GB</h3>
+        <p>$380.000</p>
+        <button class="btn-agregar" data-nombre="NVIDIA RTX 3060 12GB" data-precio="380000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/ram16.jpg" alt="RAM 16GB">
-  <h3>RAM DDR4 16GB 3200MHz</h3>
-  <p>$65.000</p>
-  <button class="btn-agregar"
-    data-nombre="RAM DDR4 16GB 3200MHz"
-    data-precio="65000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 5 -->
+      <article class="producto-card">
+        <img src="img/ssd1tb.jpg" alt="SSD 1TB">
+        <h3>SSD NVMe 1TB</h3>
+        <p>$95.000</p>
+        <button class="btn-agregar" data-nombre="SSD NVMe 1TB" data-precio="95000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/fuente650.jpg" alt="Fuente 650W">
-  <h3>Fuente 650W 80+ Bronze</h3>
-  <p>$78.000</p>
-  <button class="btn-agregar"
-    data-nombre="Fuente 650W 80+ Bronze"
-    data-precio="78000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 6 -->
+      <article class="producto-card">
+        <img src="img/ram16.jpg" alt="RAM 16GB">
+        <h3>RAM DDR4 16GB 3200MHz</h3>
+        <p>$65.000</p>
+        <button class="btn-agregar" data-nombre="RAM DDR4 16GB 3200MHz" data-precio="65000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/mother-b550.jpg" alt="Motherboard B550">
-  <h3>Motherboard B550</h3>
-  <p>$110.000</p>
-  <button class="btn-agregar"
-    data-nombre="Motherboard B550"
-    data-precio="110000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 7 -->
+      <article class="producto-card">
+        <img src="img/fuente650.jpg" alt="Fuente 650W">
+        <h3>Fuente 650W 80+ Bronze</h3>
+        <p>$78.000</p>
+        <button class="btn-agregar" data-nombre="Fuente 650W 80+ Bronze" data-precio="78000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/gabinete.jpg" alt="Gabinete gamer">
-  <h3>Gabinete Gamer RGB</h3>
-  <p>$85.000</p>
-  <button class="btn-agregar"
-    data-nombre="Gabinete Gamer RGB"
-    data-precio="85000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 8 -->
+      <article class="producto-card">
+        <img src="img/mother-b550.jpg" alt="Motherboard B550">
+        <h3>Motherboard B550</h3>
+        <p>$110.000</p>
+        <button class="btn-agregar" data-nombre="Motherboard B550" data-precio="110000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/monitor24.jpg" alt="Monitor 24 pulgadas">
-  <h3>Monitor 24'' 144Hz</h3>
-  <p>$210.000</p>
-  <button class="btn-agregar"
-    data-nombre="Monitor 24'' 144Hz"
-    data-precio="210000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 9 -->
+      <article class="producto-card">
+        <img src="img/gabinete.jpg" alt="Gabinete gamer">
+        <h3>Gabinete Gamer RGB</h3>
+        <p>$85.000</p>
+        <button class="btn-agregar" data-nombre="Gabinete Gamer RGB" data-precio="85000">
+          Agregar al carrito
+        </button>
+      </article>
 
-<article class="producto-card">
-  <img src="img/teclado.jpg" alt="Teclado mecánico">
-  <h3>Teclado Mecánico RGB</h3>
-  <p>$55.000</p>
-  <button class="btn-agregar"
-    data-nombre="Teclado Mecánico RGB"
-    data-precio="55000">
-    Agregar al carrito
-  </button>
-</article>
+      <!-- PRODUCTO 10 -->
+      <article class="producto-card">
+        <img src="img/monitor24.jpg" alt="Monitor 24 pulgadas">
+        <h3>Monitor 24'' 144Hz</h3>
+        <p>$210.000</p>
+        <button class="btn-agregar" data-nombre="Monitor 24'' 144Hz" data-precio="210000">
+          Agregar al carrito
+        </button>
+      </article>
 
-     
+      <!-- PRODUCTO 11 -->
+      <article class="producto-card">
+        <img src="img/teclado.jpg" alt="Teclado mecánico">
+        <h3>Teclado Mecánico RGB</h3>
+        <p>$55.000</p>
+        <button class="btn-agregar" data-nombre="Teclado Mecánico RGB" data-precio="55000">
+          Agregar al carrito
+        </button>
+      </article>
+
     </div>
   </main>
 
-  <!-- ================= CARRITO ================= -->
-  <aside class="carrito" id="carrito">
-    <h2>Tu carrito</h2>
-
-    <ul class="carrito-items" id="carritoItems">
-      <!-- Productos dinámicos -->
-    </ul>
-
-    <div class="carrito-total">
-      <span>Total:</span>
-      <strong id="carritoTotal">$0</strong>
-    </div>
-
-    <button class="btn-finalizar" id="btnFinalizar">
-      Finalizar compra
-    </button>
-
-    <button class="btn-vaciar" id="btnVaciar">
-      Vaciar carrito
-    </button>
-
-    <p id="mensajeCarrito"></p>
-  </aside>
-
   <!-- ================= FOOTER ================= -->
-  <footer class="footer">
+  <footer class="footer text-center py-4">
     <div class="footer-logo">NúcleoTech</div>
 
-    <nav class="footer-links">
+    <nav class="footer-links my-2">
       <a href="./pages/contacto.html">Contacto</a>
       <a href="./pages/terminos.html">Términos</a>
       <a href="./pages/instagram.html">Instagram</a>
     </nav>
 
-    <p class="footer-copy">
-      Tu próxima mejora empieza aquí.s
-    </p>
+    <p class="footer-copy">Tu próxima mejora empieza aquí.</p>
   </footer>
 
   <!-- ================= JS ================= -->
   <script src="./js/app.js"></script>
-<div id="overlay"></div>
 
-<!-- MODAL CONFIRMAR PAGO -->
-<div class="modal" id="modalConfirmacion">
-  <div class="modal-box">
-    <h3>Confirmar compra</h3>
-
-    <p id="detallePago">
-      Método de pago: <strong></strong><br>
-      Total a pagar: <strong></strong>
-    </p>
-
-    <div class="modal-actions">
-      <button id="cancelarPago" class="btn-secundario">
-        Cancelar
-      </button>
-      <button id="confirmarPago" class="btn-principal">
-        Confirmar pago
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- LOADER -->
-<div class="loader" id="loaderPago">
-  <div class="spinner"></div>
-  <p>Procesando pago...</p>
-</div>
 </body>
 </html>
