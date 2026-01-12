@@ -1,4 +1,14 @@
 //==============Responsive============//
+/* Evita que el dropdown se salga en móviles */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 
 $mobile: 480px;
 $tablet: 768px;

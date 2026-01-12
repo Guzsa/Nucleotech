@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap");
 *,
 *::before,
@@ -7,6 +8,16 @@
   box-sizing: border-box;
 }
 
+/* Evita que el dropdown se salga en móviles */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 body {
   font-family: "Rajdhani", sans-serif;
 }
