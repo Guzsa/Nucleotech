@@ -11,39 +11,79 @@
 
   <h1>Finalizar compra</h1>
 
-  <!-- Resumen -->
+  <!-- ===================== -->
+  <!-- RESUMEN -->
+  <!-- ===================== -->
   <section class="checkout-resumen">
     <h2>Resumen del pedido</h2>
     <ul id="checkoutLista"></ul>
+
     <p class="checkout-total">
       Total: <strong id="checkoutTotal">$0</strong>
     </p>
   </section>
 
-  <!-- Pago -->
+  <!-- ===================== -->
+  <!-- PAGO -->
+  <!-- ===================== -->
   <section class="checkout-pago">
     <h2>Método de pago</h2>
 
     <label>
-      <input type="radio" name="pago" value="tarjeta">
+      <input type="radio" name="pago" value="Tarjeta de crédito">
       Tarjeta de crédito
     </label>
 
     <label>
-      <input type="radio" name="pago" value="transferencia">
+      <input type="radio" name="pago" value="Transferencia bancaria">
       Transferencia bancaria
     </label>
 
     <label>
-      <input type="radio" name="pago" value="efectivo">
+      <input type="radio" name="pago" value="Efectivo">
       Efectivo
     </label>
-
-    <button id="btnPagar">Pagar</button>
-    <p id="mensajePago"></p>
   </section>
 
+  <!-- ===================== -->
+  <!-- BOTÓN CONTINUAR -->
+  <!-- ===================== -->
+  <button id="btnFinalizarCheckout" class="btn-principal">
+    Continuar con el pago
+  </button>
+
+  <p id="mensajeCheckout"></p>
+
 </main>
+
+<!-- ===================== -->
+<!-- MODAL CONFIRMACIÓN -->
+<!-- ===================== -->
+<div class="modal" id="modalConfirmacion">
+  <div class="modal-box">
+    <h3>Confirmar compra</h3>
+
+    <p id="detallePago"></p>
+
+    <div class="modal-actions">
+      <button id="cancelarPago" class="btn-secundario">
+        Cancelar
+      </button>
+
+      <button id="confirmarPago" class="btn-principal">
+        Confirmar pago
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== -->
+<!-- LOADER -->
+<!-- ===================== -->
+<div class="loader" id="loaderPago">
+  <div class="spinner"></div>
+  <p>Procesando pago...</p>
+</div>
 
 <script src="../js/checkout.js"></script>
 </body>

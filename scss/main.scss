@@ -17,5 +17,8 @@
 @use 'components/producto-card';
 @use 'components/botones';
 @use 'components/filtros';
+@use 'components/modal';
+@use 'components/loader';
+@use 'components/animaciones';
 
 @use 'pages/home';
