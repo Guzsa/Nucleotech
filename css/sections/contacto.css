@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* Evita que el dropdown se salga en móviles */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+.contacto {
+  padding: 4rem;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  font-family: "Rajdhani", sans-serif;
+}
+.contacto h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffcc;
+}
+.contacto form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: auto;
+}
+.contacto form input,
+.contacto form textarea {
+  padding: 1rem;
+  background-color: transparent;
+  border: 1px solid #00ffcc;
+  border-radius: 0.5rem;
+  color: #f0f0f0;
+}
+.contacto form button {
+  background-color: #00ffcc;
+  color: #0f0f0f;
+  padding: 1.2rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contacto form button:hover {
+  background-color: rgb(51, 255, 214.2);
+}
+
+/*# sourceMappingURL=contacto.css.map */

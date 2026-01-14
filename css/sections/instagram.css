@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/* Evita que el dropdown se salga en móviles */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+.instagram {
+  padding: 3rem;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  font-family: "Rajdhani", sans-serif;
+}
+.instagram h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #00ffcc;
+}
+.instagram .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.instagram .grid img {
+  width: 100%;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.instagram .grid img:hover {
+  transform: scale(1.05);
+}
+
+/*# sourceMappingURL=instagram.css.map */

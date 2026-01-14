@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/* Evita que el dropdown se salga en móviles */
+@media (max-width: 576px) {
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+.terminos {
+  padding: 4rem;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  font-family: "Rajdhani", sans-serif;
+}
+.terminos h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ffcc;
+}
+.terminos p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.terminos ul {
+  list-style: disc;
+  padding-left: 2rem;
+}
+.terminos ul li {
+  margin-bottom: 0.5rem;
+}
+
+/*# sourceMappingURL=terminos.css.map */
