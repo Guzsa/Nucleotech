@@ -109,9 +109,6 @@ body {
   gap: 2rem;
 }
 
-/* ===================== */
-/* CHECKOUT              */
-/* ===================== */
 .checkout {
   max-width: 720px;
   margin: 3rem auto;
@@ -121,26 +118,11 @@ body {
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
-
-/* ===================== */
-/* TITULOS               */
-/* ===================== */
 .checkout h1 {
   text-align: center;
-  font-size: 2rem;
   margin-bottom: 2rem;
   color: #22c55e;
 }
-
-.checkout h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #f8fafc;
-}
-
-/* ===================== */
-/* SECCIONES             */
-/* ===================== */
 .checkout section {
   background: #020617;
   border: 1px solid #1e293b;
@@ -148,120 +130,85 @@ body {
   border-radius: 14px;
   margin-bottom: 1.5rem;
 }
-
-/* ===================== */
-/* LISTA DE PRODUCTOS    */
-/* ===================== */
 .checkout ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
-
-.checkout li {
+.checkout ul li {
   display: flex;
   justify-content: space-between;
   padding: 0.6rem 0;
   border-bottom: 1px dashed #334155;
   font-size: 0.95rem;
 }
-
-.checkout li:last-child {
-  border-bottom: none;
-}
-
-/* ===================== */
-/* TOTAL                 */
-/* ===================== */
-.checkout-total {
+.checkout .checkout-total {
   margin-top: 1rem;
-  font-size: 1.1rem;
   text-align: right;
 }
-
-.checkout-total strong {
-  font-size: 1.3rem;
+.checkout .checkout-total strong {
   color: #22c55e;
+  font-size: 1.3rem;
 }
-
-/* ===================== */
-/* METODO DE PAGO        */
-/* ===================== */
-.checkout-pago label {
+.checkout {
+  /* ===== MÉTODOS DE PAGO ===== */
+}
+.checkout .checkout-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.checkout .checkout-pago label {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.7rem 1rem;
+  padding: 0.9rem 1rem;
   border: 1px solid #1e293b;
   border-radius: 10px;
-  margin-bottom: 0.6rem;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
-
-.checkout-pago label:hover {
+.checkout .checkout-pago label:hover {
   border-color: #22c55e;
 }
-
-.checkout-pago input {
-  accent-color: #22c55e;
+.checkout {
+  /* ===== BOTÓN ===== */
 }
-
-/* ===================== */
-/* BOTON                 */
-/* ===================== */
-.checkout button {
+.checkout #btnFinalizarCheckout {
   width: 100%;
-  margin-top: 1.5rem;
   padding: 1rem;
-  border-radius: 12px;
   font-size: 1.1rem;
   font-weight: bold;
+  border-radius: 12px;
   border: none;
-  cursor: pointer;
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #020617;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  margin-top: 1.5rem;
 }
 
-.checkout button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+@media (max-width: 768px) {
+  .checkout {
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
 }
-
-.checkout button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* ===================== */
-/* MENSAJES              */
-/* ===================== */
-#mensajePago {
-  margin-top: 1rem;
-  text-align: center;
-  font-weight: bold;
-}
-
-#mensajePago.ok {
-  color: #22c55e;
-}
-
-#mensajePago.error {
-  color: #ef4444;
-}
-
-/* ===================== */
-/* RESPONSIVE            */
-/* ===================== */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .checkout {
     padding: 1.2rem;
   }
   .checkout h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+  }
+  .checkout ul li {
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: flex-start;
+  }
+  .checkout .checkout-total {
+    text-align: left;
   }
 }
 .footer {
@@ -535,69 +482,61 @@ button,
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.8);
-  display: flex;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
   z-index: 1000;
 }
 .modal.activo {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
 }
-
-.modal-box {
+.modal .modal-box {
   background: #020617;
-  border: 1px solid #1e293b;
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 420px;
+  padding: 1.5rem;
+  border-radius: 14px;
   width: 90%;
-  color: #e5e7eb;
+  max-width: 400px;
   text-align: center;
-  animation: scaleIn 0.25s ease;
 }
-
-.modal-actions {
+.modal .modal-actions {
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+}
+.modal .modal-actions button {
+  flex: 1;
 }
 
 .loader {
   position: fixed;
   inset: 0;
   background: rgba(2, 6, 23, 0.9);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  color: #22c55e;
   z-index: 1100;
 }
 .loader.activo {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
 }
-.loader p {
-  margin-top: 1rem;
-  color: #e5e7eb;
-}
-
-.spinner {
-  width: 48px;
-  height: 48px;
+.loader .spinner {
+  width: 40px;
+  height: 40px;
   border: 4px solid #1e293b;
-  border-top-color: #22c55e;
+  border-top: 4px solid #22c55e;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .loader {
   position: fixed;
   inset: 0;

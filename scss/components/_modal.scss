@@ -1,35 +1,32 @@
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.8);
-  display: flex;
+  background: rgba(0,0,0,.7);
+  display: none;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s ease;
   z-index: 1000;
 
   &.activo {
-    opacity: 1;
-    pointer-events: auto;
+    display: flex;
   }
-}
 
-.modal-box {
-  background: #020617;
-  border: 1px solid #1e293b;
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 420px;
-  width: 90%;
-  color: #e5e7eb;
-  text-align: center;
-  animation: scaleIn .25s ease;
-}
+  .modal-box {
+    background: #020617;
+    padding: 1.5rem;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
 
-.modal-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  .modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    button {
+      flex: 1;
+    }
+  }
 }
