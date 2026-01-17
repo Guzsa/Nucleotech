@@ -113,23 +113,26 @@ body {
   max-width: 720px;
   margin: 3rem auto;
   padding: 2rem;
-  background: #020617;
-  color: #e5e7eb;
+  background: #0f0f0f;
+  color: #f0f0f0;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  font-family: "Rajdhani", sans-serif;
 }
 .checkout h1 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #22c55e;
+  color: #00ffcc;
 }
-.checkout section {
-  background: #020617;
-  border: 1px solid #1e293b;
+
+.checkout-resumen, .checkout-pago {
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1.5rem;
   border-radius: 14px;
   margin-bottom: 1.5rem;
 }
+
 .checkout ul {
   list-style: none;
   padding: 0;
@@ -139,40 +142,40 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0.6rem 0;
-  border-bottom: 1px dashed #334155;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
   font-size: 0.95rem;
 }
-.checkout .checkout-total {
+.checkout-total {
   margin-top: 1rem;
   text-align: right;
 }
-.checkout .checkout-total strong {
-  color: #22c55e;
+.checkout-total strong {
+  color: #00ffcc;
   font-size: 1.3rem;
 }
-.checkout {
-  /* ===== MÉTODOS DE PAGO ===== */
-}
-.checkout .checkout-pago {
+
+.checkout-pago {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-.checkout .checkout-pago label {
+.checkout-pago label {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 0.9rem 1rem;
-  border: 1px solid #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   cursor: pointer;
+  transition: border-color 0.2s ease;
 }
-.checkout .checkout-pago label:hover {
-  border-color: #22c55e;
+.checkout-pago label:hover {
+  border-color: #00ffcc;
 }
-.checkout {
-  /* ===== BOTÓN ===== */
+.checkout-pago label input {
+  accent-color: #00ffcc;
 }
+
 .checkout #btnFinalizarCheckout {
   width: 100%;
   padding: 1rem;
@@ -180,15 +183,15 @@ body {
   font-weight: bold;
   border-radius: 12px;
   border: none;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #020617;
+  background: linear-gradient(135deg, #00ffcc, rgb(51, 255, 214.2));
+  color: #0f0f0f;
   cursor: pointer;
   margin-top: 1.5rem;
 }
 
-/* ========================= */
+/* ===================== */
 /* RESPONSIVE */
-/* ========================= */
+/* ===================== */
 @media (max-width: 768px) {
   .checkout {
     margin: 1.5rem;
@@ -204,10 +207,10 @@ body {
   }
   .checkout ul li {
     flex-direction: column;
-    gap: 0.3rem;
     align-items: flex-start;
+    gap: 0.3rem;
   }
-  .checkout .checkout-total {
+  .checkout-total {
     text-align: left;
   }
 }

@@ -1,26 +1,37 @@
+@use '../base/variables';
+@use '../base/mixins' as m;
+
 .checkout {
   max-width: 720px;
   margin: 3rem auto;
-  padding: 2rem;
-  background: #020617;
-  color: #e5e7eb;
+  padding: variables.$espaciado-base * 2;
+  background: variables.$color-bg;
+  color: variables.$color-texto;
   border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  font-family: variables.$fuente-principal;
 
   h1 {
     text-align: center;
-    margin-bottom: 2rem;
-    color: #22c55e;
+    margin-bottom: variables.$espaciado-base * 2;
+    color: variables.$color-acento;
   }
 
-  section {
-    background: #020617;
-    border: 1px solid #1e293b;
-    padding: 1.5rem;
+  /* ===================== */
+  /* SECCIONES */
+  /* ===================== */
+  &-resumen,
+  &-pago {
+    background: variables.$color-bg;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: variables.$espaciado-base * 1.5;
     border-radius: 14px;
-    margin-bottom: 1.5rem;
+    margin-bottom: variables.$espaciado-base * 1.5;
   }
 
+  /* ===================== */
+  /* LISTA PRODUCTOS */
+  /* ===================== */
   ul {
     list-style: none;
     padding: 0;
@@ -29,72 +40,85 @@
     li {
       display: flex;
       justify-content: space-between;
-      padding: .6rem 0;
-      border-bottom: 1px dashed #334155;
-      font-size: .95rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      font-size: 0.95rem;
     }
   }
 
-  .checkout-total {
-    margin-top: 1rem;
+  &-total {
+    margin-top: variables.$espaciado-base;
     text-align: right;
 
     strong {
-      color: #22c55e;
+      color: variables.$color-acento;
       font-size: 1.3rem;
     }
   }
 
-  /* ===== MÉTODOS DE PAGO ===== */
-  .checkout-pago {
+  /* ===================== */
+  /* MÉTODOS DE PAGO */
+  /* ===================== */
+  &-pago {
     display: flex;
     flex-direction: column;
-    gap: .8rem;
+    gap: variables.$espaciado-base * 0.8;
 
     label {
       display: flex;
       align-items: center;
-      gap: .6rem;
-      padding: .9rem 1rem;
-      border: 1px solid #1e293b;
+      gap: 0.6rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       cursor: pointer;
+      transition: border-color 0.2s ease;
 
       &:hover {
-        border-color: #22c55e;
+        border-color: variables.$color-acento;
+      }
+
+      input {
+        accent-color: variables.$color-acento;
       }
     }
   }
 
-  /* ===== BOTÓN ===== */
+  /* ===================== */
+  /* BOTÓN */
+  /* ===================== */
   #btnFinalizarCheckout {
     width: 100%;
-    padding: 1rem;
+    padding: variables.$espaciado-base;
     font-size: 1.1rem;
     font-weight: bold;
     border-radius: 12px;
     border: none;
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: #020617;
+    background: linear-gradient(
+      135deg,
+      variables.$color-acento,
+      lighten(variables.$color-acento, 10%)
+    );
+    color: variables.$color-bg;
     cursor: pointer;
-    margin-top: 1.5rem;
+    margin-top: variables.$espaciado-base * 1.5;
   }
 }
 
-/* ========================= */
+/* ===================== */
 /* RESPONSIVE */
-/* ========================= */
+/* ===================== */
 
-@media (max-width: 768px) {
+@media (max-width: variables.$tablet) {
   .checkout {
-    margin: 1.5rem;
-    padding: 1.5rem;
+    margin:variables.$espaciado-base * 1.5;
+    padding:variables.$espaciado-base * 1.5;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: variables.$mobile) {
   .checkout {
-    padding: 1.2rem;
+    padding: variables.$espaciado-base * 1.2;
 
     h1 {
       font-size: 1.5rem;
@@ -102,11 +126,11 @@
 
     ul li {
       flex-direction: column;
-      gap: .3rem;
       align-items: flex-start;
+      gap: 0.3rem;
     }
 
-    .checkout-total {
+    &-total {
       text-align: left;
     }
   }
