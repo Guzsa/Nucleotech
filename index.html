@@ -18,53 +18,76 @@
 <body>
 
   <!-- ================= NAVBAR ================= -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <a class="navbar-brand fw-bold" href="./index.html">NúcleoTech</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+    <nav class="navbar navbar-dark bg-dark fixed-top px-3">
+  <div class="container-fluid">
+
+    <!-- BOTÓN HAMBURGUESA -->
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#menuMobile">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarContent">
+    <!-- LOGO -->
+    <a class="navbar-brand fw-bold mx-auto" href="./index.html">
+      NúcleoTech
+    </a>
 
-      <!-- Links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-      </ul>
+   <!-- CARRITO (SIEMPRE VISIBLE) -->
+<div class="carrito-dropdown-container">
 
-      <!-- Iconos -->
-      <div class="d-flex align-items-center gap-3">
+  <div id="iconoCarrito" class="carrito-icono text-white">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="contadorCarrito" class="badge bg-primary">0</span>
+  </div>
 
-        <i class="fas fa-user text-white fs-5"></i>
+  <!-- 🔽 DROPDOWN DEL CARRITO -->
+  <div id="carritoDropdown" class="carrito-dropdown">
+    <ul id="dropdownItems"></ul>
 
-        <!-- MINI CARRITO -->
-        <div class="dropdown carrito-dropdown-container">
+    <div class="dropdown-footer">
+      <span>Total: <span id="dropdownTotal">$0</span></span>
 
-          <!-- ICONO -->
-          <div id="iconoCarrito" class="carrito-icono dropdown-toggle text-white" data-bs-toggle="dropdown">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="contadorCarrito" class="badge bg-primary">0</span>
-          </div>
-
-          <!-- DROPDOWN -->
-          <div class="dropdown-menu dropdown-menu-end p-3 carrito-dropdown">
-            <ul id="dropdownItems" class="list-unstyled mb-2"></ul>
-
-            <p class="mb-2">Total: <strong id="dropdownTotal">$0</strong></p>
-
-            <div class="d-flex justify-content-between">
-              <button id="dropdownVaciar" class="btn btn-danger btn-sm">Vaciar</button>
-              <button id="dropdownCheckout" class="btn btn-success btn-sm">Ir al carrito</button>
-            </div>
-          </div>
-
-        </div>
+      <div class="dropdown-buttons">
+        <button id="dropdownVaciar" class="btn btn-danger btn-sm">Vaciar</button>
+        <button id="dropdownCheckout" class="btn btn-success btn-sm">Checkout</button>
       </div>
-
     </div>
-  </nav>
+  </div>
+
+</div>
+
+
+
+</nav>
+
+<div class="offcanvas offcanvas-start bg-dark text-light" id="menuMobile">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menú</h5>
+    <button type="button" class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body">
+
+    <ul class="navbar-nav gap-2">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Ofertas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Contacto</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
 
   <!-- ================= HERO ================= -->
   <section class="hero">
@@ -194,6 +217,7 @@
     </div>
   </main>
 
+
   <!-- ================= FOOTER ================= -->
   <footer class="footer text-center py-4">
     <div class="footer-logo">NúcleoTech</div>
@@ -209,6 +233,8 @@
 
   <!-- ================= JS ================= -->
   <script src="./js/app.js"></script>
+
+
 
 </body>
 </html>

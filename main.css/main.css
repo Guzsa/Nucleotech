@@ -580,12 +580,10 @@ button,
   animation: spin 1s linear infinite;
 }
 
-/* CONTENEDOR DEL CARRITO */
 .carrito-dropdown-container {
   position: relative;
 }
 
-/* ICONO DEL CARRITO */
 .carrito-icono {
   position: relative;
   cursor: pointer;
@@ -598,7 +596,6 @@ button,
   color: #00ffcc;
 }
 
-/* CONTADOR */
 #contadorCarrito {
   position: absolute;
   top: -6px;
@@ -606,21 +603,12 @@ button,
   font-size: 0.7rem;
 }
 
-/* DROPDOWN DEL CARRITO */
 .carrito-dropdown {
-  position: absolute;
-  top: 40px;
-  right: 0;
   background-color: #0f0f0f;
   color: #f0f0f0;
   border: 1px solid black;
   border-radius: 12px;
   width: 280px;
-  padding: 1rem;
-  display: none; /* Oculto por defecto */
-  z-index: 999; /* Siempre arriba */
-  max-height: 300px; /* 🔥 No rompe el HTML */
-  overflow-y: auto; /* 🔥 Scroll interno si hay muchos productos */
 }
 .carrito-dropdown ul li {
   font-size: 0.9rem;
@@ -629,17 +617,9 @@ button,
   margin-bottom: 0.4rem;
 }
 
-/* CUANDO EL JS LO ACTIVA */
-.carrito-dropdown.activo {
-  display: block;
-}
-
-/* MOBILE → ancho completo */
 @media (max-width: 480px) {
   .carrito-dropdown {
     width: 100%;
-    right: 0;
-    left: 0;
   }
 }
 body {
