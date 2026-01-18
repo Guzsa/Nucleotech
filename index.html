@@ -17,62 +17,58 @@
 
 <body>
 
-  <!-- ================= NAVBAR ================= -->
-    <a class="navbar-brand fw-bold" href="./index.html">NúcleoTech</a>
+  
+  <!-- NAV BAR -->
+   
+<nav class="navbar navbar-dark bg-dark py-2">
+ 
+  <div class="container-fluid d-flex align-items-center">
+<!-- LOGO -->
 
-    <nav class="navbar navbar-dark bg-dark fixed-top px-3">
-  <div class="container-fluid">
-
-    <!-- BOTÓN HAMBURGUESA -->
-    <button class="navbar-toggler"
+    <a class="navbar-brand fw-bold" href="./index.html">Nucleo Tech</a>
+    <!-- BOTÓN HAMBURGUESA (abre el offcanvas) -->
+    <button class="navbar-toggler me-2"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#menuMobile">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- LOGO -->
-    <a class="navbar-brand fw-bold mx-auto" href="./index.html">
-      NúcleoTech
-    </a>
+    <!-- CARRITO (SIEMPRE VISIBLE) -->
+    <div class="carrito-dropdown-container ms-auto position-relative">
 
-   <!-- CARRITO (SIEMPRE VISIBLE) -->
-<div class="carrito-dropdown-container">
-
-  <div id="iconoCarrito" class="carrito-icono text-white">
-    <i class="fas fa-shopping-cart"></i>
-    <span id="contadorCarrito" class="badge bg-primary">0</span>
-  </div>
-
-  <!-- 🔽 DROPDOWN DEL CARRITO -->
-  <div id="carritoDropdown" class="carrito-dropdown">
-    <ul id="dropdownItems"></ul>
-
-    <div class="dropdown-footer">
-      <span>Total: <span id="dropdownTotal">$0</span></span>
-
-      <div class="dropdown-buttons">
-        <button id="dropdownVaciar" class="btn btn-danger btn-sm">Vaciar</button>
-        <button id="dropdownCheckout" class="btn btn-success btn-sm">Checkout</button>
+      <div id="iconoCarrito" class="carrito-icono text-white">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="contadorCarrito" class="badge bg-primary">0</span>
       </div>
+
+      <!-- DROPDOWN DEL CARRITO -->
+      <div id="carritoDropdown" class="carrito-dropdown">
+        <ul id="dropdownItems"></ul>
+
+        <div class="dropdown-footer">
+          <span>Total: <span id="dropdownTotal">$0</span></span>
+
+          <div class="dropdown-buttons mt-2 d-flex gap-2">
+            <button id="dropdownVaciar" class="btn btn-danger btn-sm w-50">Vaciar</button>
+            <button id="dropdownCheckout" class="btn btn-success btn-sm w-50">Checkout</button>
+          </div>
+        </div>
+      </div>
+
     </div>
+
   </div>
-
-</div>
-
-
-
 </nav>
 
+<!-- MENU MOBILE (OFFCANVAS) -->
 <div class="offcanvas offcanvas-start bg-dark text-light" id="menuMobile">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title">Menú</h5>
-    <button type="button" class="btn-close btn-close-white"
-            data-bs-dismiss="offcanvas"></button>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
   </div>
 
   <div class="offcanvas-body">
-
     <ul class="navbar-nav gap-2">
       <li class="nav-item">
         <a class="nav-link text-white" href="#">Productos</a>
@@ -84,10 +80,8 @@
         <a class="nav-link text-white" href="#">Contacto</a>
       </li>
     </ul>
-
   </div>
 </div>
-
 
   <!-- ================= HERO ================= -->
   <section class="hero">

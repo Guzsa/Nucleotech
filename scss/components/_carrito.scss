@@ -1,19 +1,19 @@
 @use '../base/variables';
 @use '../base/mixins' as m;
 
-/* CONTENEDOR DEL CARRITO */
 .carrito-dropdown-container {
   position: relative;
 }
 
-/* ICONO DEL CARRITO */
 .carrito-icono {
   position: relative;
   cursor: pointer;
+  padding: 5px; 
 
   i {
     font-size: 1.3rem;
     color: variables.$color-texto;
+    @include m.transition;
   }
 
   &:hover i {
@@ -21,48 +21,85 @@
   }
 }
 
-/* CONTADOR */
 #contadorCarrito {
   position: absolute;
-  top: -6px;
-  right: -10px;
-  font-size: 0.7rem;
+  top: -2px;
+  right: -5px;
+  font-size: 0.65rem;
+  padding: 0.25em 0.5em;
+  border-radius: 50%;
 }
 
-/* DROPDOWN DEL CARRITO */
 .carrito-dropdown {
-  position: absolute;        
-  top: 40px;                 
+  display: none; 
+  position: absolute;
   right: 0;
+  top: calc(100% + 15px); // Se separa un poco del navbar
+  width: 320px;
   background-color: variables.$color-bg;
-  color: variables.$color-texto;
-  border: 1px solid darken(variables.$color-bg, 10%);
+  border: 1px solid rgba(variables.$color-acento, 0.3);
   border-radius: 12px;
-  width: 280px;
-  padding: 1rem;
-  display: none;             /* Oculto por defecto */
-  z-index: 999;              /* Siempre arriba */
-  max-height: 300px;         /* 🔥 No rompe el HTML */
-  overflow-y: auto;          /* 🔥 Scroll interno si hay muchos productos */
+  z-index: 2000; // Supera al Offcanvas de Bootstrap (1050)
+  padding: 1.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
-  ul li {
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.4rem;
+  &.activo {
+    display: block;
+    animation: fadeIn 0.2s ease-out; // Pequeña animación de entrada
+  }
+
+  // Lista de productos con scroll interno
+  #dropdownItems {
+    max-height: 350px; // Evita que el carrito sea infinito
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding-right: 5px;
+
+    // Custom scrollbar para que se vea pro
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: variables.$color-acento;
+      border-radius: 10px;
+    }
+
+    li {
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+      &:last-child { border-bottom: none; }
+    }
+  }
+
+  .dropdown-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    
+    #dropdownTotal {
+      font-weight: bold;
+      color: variables.$color-acento;
+    }
+  }
+
+  /* ===================== */
+  /* RESPONSIVE CARRITO */
+  /* ===================== */
+  @include m.mobile {
+    position: fixed; 
+    top: 70px; 
+    left: 10px;
+    right: 10px;
+    width: auto; 
+    max-height: 80vh;
   }
 }
 
-/* CUANDO EL JS LO ACTIVA */
-.carrito-dropdown.activo {
-  display: block;
-}
-
-/* MOBILE → ancho completo */
-@include m.mobile {
-  .carrito-dropdown {
-    width: 100%;
-    right: 0;
-    left: 0;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

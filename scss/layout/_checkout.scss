@@ -3,7 +3,8 @@
 
 .checkout {
   max-width: 720px;
-  margin: 3rem auto;
+  // Cambié margin 3rem por auto en los costados y padding dinámico
+  margin: 2rem auto; 
   padding: variables.$espaciado-base * 2;
   background: variables.$color-bg;
   color: variables.$color-texto;
@@ -11,15 +12,15 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   font-family: variables.$fuente-principal;
 
+  // IMPORTANTE: Evitar que el checkout quede debajo del navbar sticky
+  scroll-margin-top: 100px; 
+
   h1 {
     text-align: center;
     margin-bottom: variables.$espaciado-base * 2;
     color: variables.$color-acento;
   }
 
-  /* ===================== */
-  /* SECCIONES */
-  /* ===================== */
   &-resumen,
   &-pago {
     background: variables.$color-bg;
@@ -29,9 +30,6 @@
     margin-bottom: variables.$espaciado-base * 1.5;
   }
 
-  /* ===================== */
-  /* LISTA PRODUCTOS */
-  /* ===================== */
   ul {
     list-style: none;
     padding: 0;
@@ -40,7 +38,8 @@
     li {
       display: flex;
       justify-content: space-between;
-      padding: 0.6rem 0;
+      align-items: center; // Alineación vertical
+      padding: 0.8rem 0; // Más espacio para dedos en móvil
       border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
       font-size: 0.95rem;
     }
@@ -56,9 +55,6 @@
     }
   }
 
-  /* ===================== */
-  /* MÉTODOS DE PAGO */
-  /* ===================== */
   &-pago {
     display: flex;
     flex-direction: column;
@@ -67,26 +63,26 @@
     label {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.9rem 1rem;
+      gap: 0.8rem;
+      padding: 1.2rem 1rem; // Más alto para facilitar el click
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       cursor: pointer;
-      transition: border-color 0.2s ease;
+      @include m.transition; // Usando tu mixin de transición
 
       &:hover {
         border-color: variables.$color-acento;
+        background: rgba(variables.$color-acento, 0.05); // Feedback visual
       }
 
       input {
+        width: 1.2rem; // Inputs más grandes para mobile
+        height: 1.2rem;
         accent-color: variables.$color-acento;
       }
     }
   }
 
-  /* ===================== */
-  /* BOTÓN */
-  /* ===================== */
   #btnFinalizarCheckout {
     width: 100%;
     padding: variables.$espaciado-base;
@@ -102,36 +98,43 @@
     color: variables.$color-bg;
     cursor: pointer;
     margin-top: variables.$espaciado-base * 1.5;
+    @include m.transition;
+
+    &:active {
+      transform: scale(0.98); // Efecto de pulsación
+    }
   }
-}
 
-/* ===================== */
-/* RESPONSIVE */
-/* ===================== */
+  /* ===================== */
+  /* RESPONSIVE ANIDADO */
+  /* ===================== */
 
-@media (max-width: variables.$tablet) {
-  .checkout {
-    margin:variables.$espaciado-base * 1.5;
-    padding:variables.$espaciado-base * 1.5;
+  @include m.tablet {
+    margin: 1.5rem; // Evita que toque los bordes del navegador
+    padding: variables.$espaciado-base * 1.5;
   }
-}
 
-@media (max-width: variables.$mobile) {
-  .checkout {
-    padding: variables.$espaciado-base * 1.2;
+  @include m.mobile {
+    margin: 1rem 0.5rem;
+    padding: variables.$espaciado-base;
+    border-radius: 12px; // Bordes más simples en pantallas chicas
 
     h1 {
       font-size: 1.5rem;
     }
 
     ul li {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.3rem;
+      flex-direction: row; // Mantenemos el row pero ajustamos el texto
+      flex-wrap: wrap; 
+      span:first-child {
+        max-width: 70%; // El nombre del producto no pisa el precio
+      }
     }
 
     &-total {
-      text-align: left;
+      text-align: center; // Mejor centrado en móviles
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
     }
   }
 }

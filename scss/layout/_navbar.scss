@@ -1,17 +1,28 @@
 @use '../base/variables';
 @use '../base/mixins' as m;
 
+
 .navbar {
   background-color: variables.$color-bg;
   color: variables.$color-texto;
   padding: variables.$espaciado-base;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky; // Para que no se pierda al scrollear
+  top: 0;
+  z-index: 1000;
+  
+  .navbar-brand {
+  font-size: 2rem; 
+  font-weight: 700;
+  text-align: center;
+}
 
-  // Links (desktop)
   .navbar-nav {
+    display: flex;
+    align-items: center;
+
     .nav-link {
       color: variables.$color-texto;
       margin-right: variables.$espaciado-base;
@@ -21,12 +32,28 @@
         color: variables.$color-acento;
       }
     }
-  }
 
-  // Responsive
-  @include m.tablet {
-    .navbar-nav {
-      text-align: center;
+    // LÓGICA MOBILE (Debajo de tablet)
+    @media (max-width: 768px) { // O el valor que use tu mixin tablet
+      position: fixed;
+      top: 60px; // Ajusta según el alto de tu navbar
+      right: -100%; // Escondido a la derecha
+      background-color: variables.$color-bg;
+      width: 100%;
+      height: calc(100vh - 60px);
+      flex-direction: column;
+      justify-content: center;
+      transition: right 0.4s ease;
+      z-index: 999;
+
+      &.is-active {
+        right: 0; // Se desliza hacia adentro
+      }
+
+      .nav-link {
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+      }
     }
   }
 }
