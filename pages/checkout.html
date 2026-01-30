@@ -15,9 +15,64 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+  
+ <header> 
+<nav class="navbar navbar-dark bg-dark py-2">
+  <div class="container-fluid d-flex align-items-center">
+    
+    <a class="navbar-brand fw-bold" href="../index.html">Nucleo Tech</a>
 
+    <button class="navbar-toggler me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#menuMobile">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="carrito-dropdown-container ms-auto position-relative">
+      <div id="iconoCarrito" class="carrito-icono text-white">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="contadorCarrito" class="badge bg-primary">0</span>
+      </div>
+      
+      <div id="carritoDropdown" class="carrito-dropdown">
+        <ul id="dropdownItems"></ul>
+        <div class="dropdown-footer">
+          <span>Total: <span id="dropdownTotal">$0</span></span>
+          <div class="dropdown-buttons mt-2 d-flex gap-2">
+            <button id="dropdownVaciar" class="btn btn-danger btn-sm w-50">Vaciar</button>
+            <button id="dropdownCheckout" class="btn btn-success btn-sm w-50">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+</header>
+
+<div class="offcanvas offcanvas-start bg-dark text-light" id="menuMobile">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menú</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav gap-2">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="../index.html#catalogo">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Ofertas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Arma tu PC</a>
+      </li>
+    </ul>
+  </div>
+</div>
 <main class="checkout">
-
+<div class="checkout-header">
+    <a href="../index.html" class="btn-volver">← Volver a la tienda</a>
+  </div>
   <h1>Finalizar compra</h1>
   <!-- RESUMEN -->
   <section class="checkout-resumen">

@@ -1,72 +1,71 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
-  // ESTADO
-  // =========================
+  // --- ESTADO ---
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // =========================
-  // DOM
-  // =========================
+  // --- REFERENCIAS DOM ---
   const lista = document.getElementById("checkoutLista");
-  const total = document.getElementById("checkoutTotal");
-
+  const totalDisplay = document.getElementById("checkoutTotal");
   const btnContinuar = document.getElementById("btnFinalizarCheckout");
   const mensaje = document.getElementById("mensajeCheckout");
-
   const modal = document.getElementById("modalConfirmacion");
   const detallePago = document.getElementById("detallePago");
   const btnConfirmar = document.getElementById("confirmarPago");
   const btnCancelar = document.getElementById("cancelarPago");
-
   const loader = document.getElementById("loaderPago");
 
-  // =========================
-  // RENDER
-  // =========================
+  // --- LÓGICA DE CÁLCULO (Separada del render) ---
+  const calcularTotalFinal = () => {
+    return carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
+  };
+
+  // --- RENDERIZADO ---
   function renderResumen() {
     lista.innerHTML = "";
 
-    let suma = 0;
+    if (carrito.length === 0) {
+      lista.innerHTML = "<li>Tu carrito está vacío</li>";
+      totalDisplay.textContent = "$0";
+      return;
+    }
 
     carrito.forEach(prod => {
-      suma += prod.precio;
-
       const li = document.createElement("li");
-      li.textContent = `${prod.nombre} - $${prod.precio}`;
+      // Ahora mostramos la cantidad y el subtotal por producto
+      li.innerHTML = `
+        <div class="checkout-item">
+          <span>${prod.nombre} <strong>(x${prod.cantidad})</strong></span>
+          <span>$${prod.precio * prod.cantidad}</span>
+        </div>
+      `;
       lista.appendChild(li);
     });
 
-    total.textContent = `$${suma}`;
+    totalDisplay.textContent = `$${calcularTotalFinal()}`;
   }
 
-  // =========================
-  // CONTINUAR
-  // =========================
+  // --- GESTIÓN DE PAGO ---
   btnContinuar.addEventListener("click", () => {
-
-     // Validación de carrito vacío
-  if (carrito.length === 0) {
-    mensaje.textContent = "No hay productos en el carrito.";
-    return;
-  }
+    if (carrito.length === 0) {
+      mensaje.textContent = "No hay productos en el carrito para procesar la compra.";
+      return;
+    }
 
     const metodo = document.querySelector('input[name="pago"]:checked');
 
     if (!metodo) {
-      mensaje.textContent = "Seleccioná un método de pago";
+      mensaje.textContent = "Por favor, seleccioná un método de pago";
       return;
     }
 
     mensaje.textContent = "";
-
-    detallePago.textContent = `Vas a pagar con ${metodo.value}. ¿Confirmás la compra?`;
+    detallePago.innerHTML = `
+      Vas a pagar <strong>$${calcularTotalFinal()}</strong> con <strong>${metodo.value}</strong>.<br>
+      ¿Confirmás la operación?
+    `;
     modal.classList.add("activo");
   });
 
-  // =========================
-  // CONFIRMAR
-  // =========================
   btnConfirmar.addEventListener("click", () => {
     modal.classList.remove("activo");
     loader.classList.add("activo");
@@ -78,15 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2500);
   });
 
-  // =========================
-  // CANCELAR
-  // =========================
   btnCancelar.addEventListener("click", () => {
     modal.classList.remove("activo");
   });
 
-  // =========================
-  // INIT
-  // =========================
+  // --- INICIO ---
   renderResumen();
 });

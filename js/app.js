@@ -1,60 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===============================
-  // ESTADO INICIAL
-  // ===============================
+  // --- ESTADO ---
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // ===============================
-  // REFERENCIAS AL DOM
-  // ===============================
+  // --- REFERENCIAS AL DOM ---
   const botonesAgregar = document.querySelectorAll(".btn-agregar");
   const contadorCarrito = document.getElementById("contadorCarrito");
   const iconoCarrito = document.getElementById("iconoCarrito");
-
-  // Elementos del dropdown
   const dropdown = document.getElementById("carritoDropdown");
   const dropdownItems = document.getElementById("dropdownItems");
   const dropdownTotal = document.getElementById("dropdownTotal");
   const btnVaciar = document.getElementById("dropdownVaciar");
   const btnCheckout = document.getElementById("dropdownCheckout");
 
-  // ===============================
-  // AGREGAR PRODUCTOS
-  // ===============================
-  botonesAgregar.forEach(boton => {
-    boton.addEventListener("click", () => {
-      const producto = {
-        id: Date.now(),
-        nombre: boton.dataset.nombre,
-        precio: Number(boton.dataset.precio)
-      };
+  // --- LÓGICA DE CÁLCULO (Separada del renderizado) ---
+  const calcularTotal = () => {
+    return carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
+  };
 
-      carrito.push(producto);
-      guardarCarrito();
-      actualizarContador();
-      renderDropdown();
-    });
-  });
+  const calcularUnidadesTotales = () => {
+    return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+  };
 
-  // ===============================
-  // ABRIR / CERRAR DROPDOWN
-  // ===============================
-  iconoCarrito.addEventListener("click", () => {
-    dropdown.classList.toggle("activo");
-    renderDropdown();
-  });
-
-  // ===============================
-  // FUNCIONES
-  // ===============================
+  // --- PERSISTENCIA ---
   function guardarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
+  // --- FUNCIONES DE INTERFAZ (Renderizado) ---
   function actualizarContador() {
     if (contadorCarrito) {
-      contadorCarrito.textContent = carrito.length;
+      contadorCarrito.textContent = calcularUnidadesTotales();
     }
   }
 
@@ -67,28 +43,56 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    let total = 0;
-
+    // Dibujamos los productos usando la nueva propiedad 'cantidad'
     carrito.forEach(prod => {
-      total += prod.precio;
-
       const li = document.createElement("li");
       li.innerHTML = `
-        ${prod.nombre} - $${prod.precio}
+        <div class="item-info">
+          <span>${prod.nombre} (x${prod.cantidad})</span>
+          <span>$${prod.precio * prod.cantidad}</span>
+        </div>
         <button data-id="${prod.id}" class="btn-eliminar">X</button>
       `;
       dropdownItems.appendChild(li);
     });
 
-    dropdownTotal.textContent = `$${total}`;
+    dropdownTotal.textContent = `$${calcularTotal()}`;
   }
 
-  // ===============================
-  // ELIMINAR PRODUCTO
-  // ===============================
+  // --- MANEJO DE EVENTOS ---
+
+  botonesAgregar.forEach(boton => {
+    boton.addEventListener("click", () => {
+      // IMPORTANTE: Asegúrate de que en tu HTML cada botón tenga data-id
+      const idSeleccionado = boton.dataset.id || boton.dataset.nombre; 
+      
+      const productoExistente = carrito.find(p => p.id === idSeleccionado);
+
+      if (productoExistente) {
+        productoExistente.cantidad++;
+      } else {
+        carrito.push({
+          id: idSeleccionado,
+          nombre: boton.dataset.nombre,
+          precio: Number(boton.dataset.precio),
+          cantidad: 1
+        });
+      }
+
+      guardarCarrito();
+      actualizarContador();
+      renderDropdown();
+    });
+  });
+
+  iconoCarrito.addEventListener("click", () => {
+    dropdown.classList.toggle("activo");
+    renderDropdown();
+  });
+
   dropdownItems.addEventListener("click", (e) => {
     if (e.target.classList.contains("btn-eliminar")) {
-      const id = Number(e.target.dataset.id);
+      const id = e.target.dataset.id;
       carrito = carrito.filter(p => p.id !== id);
       guardarCarrito();
       actualizarContador();
@@ -96,9 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===============================
-  // VACIAR CARRITO
-  // ===============================
   btnVaciar.addEventListener("click", () => {
     carrito = [];
     guardarCarrito();
@@ -106,17 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
     renderDropdown();
   });
 
-  // ===============================
-  // IR AL CHECKOUT
-  // ===============================
   btnCheckout.addEventListener("click", () => {
     window.location.href = "./pages/checkout.html";
   });
 
-  // ===============================
-  // CARGA INICIAL
-  // ===============================
+  // --- CARGA INICIAL ---
   actualizarContador();
   renderDropdown();
 });
-
