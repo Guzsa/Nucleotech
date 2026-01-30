@@ -19,6 +19,18 @@ button,
   border: none;
   cursor: pointer;
   @include m.transition;
+
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px variables.$color-bg;
+    filter: brightness(1.1);
+  }
+
+  
+  &:active {
+    transform: scale(0.98);
+  }
 }
 #overlay {
   position: fixed;
